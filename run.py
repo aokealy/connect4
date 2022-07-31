@@ -24,6 +24,8 @@ def printGameBoard():
 
 def modifyTurn(spacePicked, turn):
     gameBoard[spacePicked[0]][spacePicked[1]] = turn
+#check for row and columns to have 4 chips in a row of same colour
+def checkForWinner(chip):    
 
 turnCounter = 0
 while True:
