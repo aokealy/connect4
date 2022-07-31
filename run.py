@@ -84,7 +84,12 @@ def isSpaceAvailable(intendedCoordinate):   #is this space free before I go ther
     else
      return True 
 
-def  gravityChecker(intendedCoordinate)
+def  gravityChecker(intendedCoordinate):
+ ### calculate the space below
+ spaceBelow =  [None] * 2
+ spaceBelow[0] = intendedCoordinate[0] + 1
+ spaceBelow[1] = intendedCoordinate[1] 
+ ### Is the cordinate at ground level
 
 
 
