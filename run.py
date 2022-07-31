@@ -21,4 +21,10 @@ def printGameBoard():
       else:
         print(" ", gameBoard[x][y], end="  |")
   print("\n   +----+----+----+----+----+----+----+")
-printGameBoard()         
+
+def modifyTurn(spacePicked, turn):
+    gameBoard[spacePicked[0]][spacePicked[1]] = turn
+
+turnCounter = 0
+while True:
+    ### Do something in here          
