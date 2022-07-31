@@ -90,6 +90,11 @@ def  gravityChecker(intendedCoordinate):
  spaceBelow[0] = intendedCoordinate[0] + 1
  spaceBelow[1] = intendedCoordinate[1] 
  ### Is the cordinate at ground level
+ if(spaceBelow[0] == 6): #if equal 6 we know it is at the ground
+    return True
+ ### check if there is a token below
+ if(isSpaceAvailable(spaceBelow) == False): # needs to return false for whole fuction to be true
+    return True
 
 
 
