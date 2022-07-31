@@ -4,7 +4,7 @@ print("Welcome to Connect Four")
 print("-----------------------")
 
 possibleLetters = ["A","B","C","D","E","F","G"]
-gameBoard = [["","","","","","",""], ["","","","","","",""],["","","","","","",""],["","","","","","",""],["","","","","","",""],["","","","","","",""]]
+gameBoard = [["","","","","","",""], ["","","","","","",""], ["","","","","","",""], ["","","","","","",""], ["","","","","","",""], ["","","","","","",""]]
 rows = 6
 cols = 7
 
@@ -22,7 +22,7 @@ def printGameBoard():
         print(" ", gameBoard[x][y], end="  |")
   print("\n   +----+----+----+----+----+----+----+")
 
-def modifyTurn(spacePicked, turn):
+def modifyArray(spacePicked, turn):
     gameBoard[spacePicked[0]][spacePicked[1]] = turn
 #check for row and columns to have 4 chips in a row of same colour
 def checkForWinner(chip):
@@ -81,7 +81,7 @@ def isSpaceAvailable(intendedCoordinate):   #is this space free before I go ther
      return False
     elif(gameBoard[intendedCoordinate[0]][intendedCoordinate[1]] == '🔴'):
      return False
-    else
+    else:
      return True 
 
 def  gravityChecker(intendedCoordinate):
@@ -95,9 +95,41 @@ def  gravityChecker(intendedCoordinate):
  ### check if there is a token below
  if(isSpaceAvailable(spaceBelow) == False): # needs to return false for whole fuction to be true
     return True
+ return False
 
 
-
+leaveLoop = False
 turnCounter = 0
-while True:
-    ### Do something in here
+while(leaveLoop == False):
+    if(turnCounter % 2 == 0):
+        printGameBoard()
+        while True:
+            spacePicked = input("\nChoose a space: ")
+            coordinate = coordinateParser(spacePicked)
+            try:
+              ### check is space is available
+              if(isSpaceAvailable(coordinate) and gravityChecker(coordinate)):
+               modifyArray(coordinate, '🔴')
+               break
+              else:
+                print("Not a valid coordinate")  
+            except:
+                print("Error occured. Please try again")  
+        winner = checkForWinner('🔴')
+        turnCounter += 1
+       ### it is the computers turn
+       else:
+        while True:
+            cpuChoice = [random.choice(possibleLetters), random.randint(0, 5)]
+            cpuCoordinant = coordinateParser(cpuChoice)
+            if(isSpaceAvailable(cpuCoordinate) and gravityChecker(cpuCoordinate)):
+                modifyArray(coordinate, '🟡')
+               break
+        turnCounter += 1
+        winner = checkForWinner('🟡')
+
+      if(winner):
+        printGameBoard()
+        break  
+
+
