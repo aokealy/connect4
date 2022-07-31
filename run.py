@@ -52,7 +52,42 @@ def checkForWinner(chip):
         if(gameBoard[x][y] == chip and gameBoard[x+1][y+1] == chip and gameBoard[x+2][y+2] == chip and gameBoard[x+3][y+3] == chip):
             print("\nGame Over!S", chip, " wins! Thank you for playing :D")
             return True                                   
+    
+    return False
+
+def coordinateParser(inputString): #paramenter
+    coordinate = [None] * 2
+    if(inputString[0] == "A"):
+        coordinate[1] = 0
+    elif(inputString[0] == "B"):
+        coordinate[1] = 1 
+    elif(inputString[0] == "C"):
+        coordinate[1] = 2 
+    elif(inputString[0] == "D"):
+        coordinate[1] = 3  
+    elif(inputString[0] == "E"):
+        coordinate[1] = 4  
+    elif(inputString[0] == "F"):
+        coordinate[1] = 5 
+    elif(inputString[0] == "G"):
+        coordinate[1] = 6 
+    else:
+        print("Invalid") 
+    coordinate[0] = int(inputString[1]) 
+    return coordinate
+
+def isSpaceAvailable(intendedCoordinate):   #is this space free before I go there
+    if(gameBoard[intendedCoordinate[0]][intendedCoordinate[1]] == '🟡'):
+     return False
+    elif(gameBoard[intendedCoordinate[0]][intendedCoordinate[1]] == '🔴'):
+     return False
+    else
+     return True 
+
+def  gravityChecker(intendedCoordinate)
+
+
 
 turnCounter = 0
 while True:
-    ### Do something in here          
+    ### Do something in here
